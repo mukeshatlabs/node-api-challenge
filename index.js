@@ -12,6 +12,7 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+require('dotenv').config();
 const express = require('express');
 
 const projectRoutes = require('./projects/projectRoutes');
@@ -27,4 +28,8 @@ server.get('/', (req,res)=>{
     res.send({message: 'Welcome to the Projects and Actions API'});
 })
 
-server.listen(7000, ()=>console.log('API running on port 7000'));
+const port = process.env.PORT || 7000;
+
+server.listen(port, () => {
+    console.log(`\n*** Server Running on http://localhost:${port} ***\n`);
+  });
