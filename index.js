@@ -12,3 +12,19 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+const express = require('express');
+
+const projectRoutes = require('./projects/projectRoutes');
+const actionRoutes = require('./actions/actionRoutes');
+
+const server = express();
+
+server.use(express.json());
+server.use('/projects', projectRoutes);
+server.use('/actions', actionRoutes);
+
+server.get('/', (req,res)=>{
+    res.send({message: 'Welcome to the Projects and Actions API'});
+})
+
+server.listen(7000, ()=>console.log('API running on port 7000'));
